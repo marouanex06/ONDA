@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/backend-api/(.*)",
+      "destination": "https://onda.xo.je/backend/api/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
