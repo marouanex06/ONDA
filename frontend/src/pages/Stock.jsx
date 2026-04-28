@@ -25,8 +25,6 @@ const Stock = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [idSToDelete, setIdSToDelete] = useState(null);
-  const [page, setPage] = useState(1);
-  const limit = 10;
 
   useEffect(() => {
     dispatch(getStock());

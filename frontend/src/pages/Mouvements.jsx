@@ -318,6 +318,11 @@ const Mouvements = () => {
         )}
       </div>
 
+      {errorMessage && (
+        <div className="bg-red-100 text-red-700 p-4 rounded-lg mb-4 border border-red-400 shadow-md">
+          {errorMessage}
+        </div>
+      )}
       {successMessage && (
         <div className="bg-green-100 text-green-700 p-4 rounded-lg mb-4 border border-green-400 shadow-md animate-pulse">
           ✓ {successMessage}
