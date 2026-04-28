@@ -1,10 +1,10 @@
 <?php
-$host = '127.0.0.1';
-$db   = 'gestion_materiel_it';
-$user = 'root';
-$pass = '';
+$host = 'mysql-117accf-marwane1gb23-c0dc.a.aivencloud.com';
+$db   = 'defaultdb';
+$user = 'avnadmin';
+$pass = ' ';
 $charset = 'utf8mb4';
-$port = getenv('DB_PORT') ?: '3306';
+$port = 17211;
 
 $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
 $options = [
