@@ -2,6 +2,10 @@
 -- GESTION DE STOCK - BASE DE DONNÉES
 -- ==========================================
 
+-- 0. CREATE DATABASE
+CREATE DATABASE IF NOT EXISTS gestion_materiel_it;
+USE gestion_materiel_it;
+
 -- 1. TABLE UTILISATEURS
 DROP TABLE IF EXISTS utilisateurs;
 CREATE TABLE utilisateurs (
@@ -17,7 +21,7 @@ CREATE TABLE utilisateurs (
 );
 
 INSERT INTO utilisateurs (full_name, username, email, password, role)
-VALUES ('Ilham', 'ilham', 'admin@example.com', '$2y$10$xwcnUjnP0lp0iKRKfQu3Ze3XHowiaBo4ErYHX8de9ZnfQaEsQTNc6', 'admin');
+VALUES ('Ilham', 'ilham', 'admin@example.com', '$2y$10$OixZaYtSYuJl/7fAKFOccuU3sHTN1Jex3cOuPVW63E4k.DXdDLs2m', 'admin');
 
 -- 2. TABLE FOURNITURES
 DROP TABLE IF EXISTS fournitures;

@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/backend-api/(.*)",
+      "source": "/api/(.*)",
       "destination": "https://onda.xo.je/backend/api/$1"
     },
     {
