@@ -2,11 +2,6 @@ import axios from "axios";
 
 const location = typeof window !== "undefined" ? window.location : null;
 const configuredApiBaseUrl = process.env.REACT_APP_API_BASE_URL?.trim();
-const useHostedProxy =
-  location &&
-  /vercel\.app$/i.test(location.hostname) &&
-  configuredApiBaseUrl &&
-  /^https?:\/\//i.test(configuredApiBaseUrl);
 const DEFAULT_API_ORIGIN =
   process.env.REACT_APP_API_ORIGIN ||
   (location ? `${location.protocol}//${location.hostname}` : "http://localhost");
@@ -16,9 +11,7 @@ const DEFAULT_API_PATH =
     ? "/onda-main/backend/api"
     : "/backend-api");
 const API_BASE_URL = (
-  (useHostedProxy
-    ? `${DEFAULT_API_ORIGIN}${DEFAULT_API_PATH}`
-    : configuredApiBaseUrl) ||
+  configuredApiBaseUrl ||
   `${DEFAULT_API_ORIGIN}${DEFAULT_API_PATH}`
 ).replace(/\/+$/, "");
 

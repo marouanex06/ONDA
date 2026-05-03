@@ -1,10 +1,17 @@
 <?php
-$host = 'mysql-117accf-marwane1gb23-c0dc.a.aivencloud.com';
-$db   = 'defaultdb';
-$user = 'avnadmin';
-$pass = ' ';
-$charset = 'utf8mb4';
-$port = 17211;
+
+function env_or_default(string $key, string $default): string
+{
+    $value = getenv($key);
+    return $value === false || $value === '' ? $default : $value;
+}
+
+$host = env_or_default('DB_HOST', 'mysql-117accf-marwane1gb23-c0dc.a.aivencloud.com');
+$db   = env_or_default('DB_DATABASE', 'defaultdb');
+$user = env_or_default('DB_USERNAME', 'avnadmin');
+$pass = env_or_default('DB_PASSWORD', '');
+$charset = env_or_default('DB_CHARSET', 'utf8mb4');
+$port = (int) env_or_default('DB_PORT', '17211');
 
 $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
 $options = [
