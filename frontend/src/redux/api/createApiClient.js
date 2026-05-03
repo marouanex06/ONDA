@@ -50,8 +50,23 @@ export const createApiClient = (resourcePath) => {
   const axiosClient = axios.create({
     baseURL: apiFile ? `${API_BASE_URL}/${apiFile}` : API_BASE_URL,
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "text/plain;charset=UTF-8",
     },
+    transformRequest: [
+      (data) => {
+        if (
+          data instanceof FormData ||
+          data instanceof URLSearchParams ||
+          typeof data === "string" ||
+          data === undefined ||
+          data === null
+        ) {
+          return data;
+        }
+
+        return JSON.stringify(data);
+      },
+    ],
   });
 
   axiosClient.interceptors.request.use((config) => {
@@ -60,10 +75,15 @@ export const createApiClient = (resourcePath) => {
       config.url = `${apiFile}${config.url}`;
     }
 
-    const token = localStorage.getItem("token");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    if (["delete", "patch", "put"].includes(config.method)) {
+      config.method = "post";
     }
+
+    if (config.data instanceof FormData) {
+      delete config.headers["Content-Type"];
+    }
+
+    delete config.headers.Authorization;
     return config;
   });
 
