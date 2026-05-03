@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/backend-api/:path*",
+      "destination": "https://onda-stock.infinityfreeapp.com/backend/api/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
